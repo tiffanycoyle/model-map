@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Catches a malformed price, a duplicate id, or a job label that no model
+      # uses, before any of it reaches the site.
+      - name: Validate data
+        run: node src/validate.mjs
+
+      - name: Build
+        run: node src/build.mjs
+
+      # A build that emits an inline style or script would silently break the
+      # Content-Security-Policy at runtime, so it fails the build instead.
+      - name: Check for inline styles and unexpected inline scripts
+        run: node src/check-output.mjs

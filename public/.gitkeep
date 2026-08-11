@@ -1,0 +1,10 @@
+Files placed in this directory are copied verbatim into the built site.
+
+Use it for anything the build does not generate:
+
+  CNAME          a custom domain for GitHub Pages, e.g. modelmap.example.com
+  _redirects     Cloudflare Pages redirect rules
+  og-image.png   a social preview image, if you add one
+
+This placeholder file is harmless if it ships. Delete it once you put something
+real in here.

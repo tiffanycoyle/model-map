@@ -1,0 +1,146 @@
+{
+  "$comment": "Editorial content for The Model Map. Prose lives here rather than in templates so it can be edited without touching build code.",
+  "site": {
+    "title": "The Model Map",
+    "tagline": "Field reference · August 2026",
+    "description": "Twenty-five AI models from thirteen vendors, priced and labeled. Compare cost, context, licensing and capability, then work out what your own setup would cost.",
+    "lede": "Twenty-five models from thirteen vendors, priced and labeled. No single model wins everything, and the right pick is usually decided by budget and constraints before it's decided by benchmark. Read down for the shape of the market, or jump to the end to work out your own setup."
+  },
+  "nav": [
+    { "id": "prices", "short": "Prices", "long": "The price range" },
+    { "id": "board", "short": "Board", "long": "Top of the board" },
+    { "id": "tiers", "short": "Tiers", "long": "The five tiers" },
+    { "id": "reference", "short": "Reference", "long": "Full reference" },
+    { "id": "costs", "short": "Costs", "long": "What it costs" },
+    { "id": "when", "short": "When", "long": "What to use when" },
+    { "id": "routing", "short": "Routing", "long": "How to route" },
+    { "id": "build", "short": "Your setup", "long": "Work out your own setup" }
+  ],
+  "board": {
+    "eyebrow": "Who leads",
+    "heading": "The top of the board",
+    "rows": [
+      { "rank": 1, "name": "Claude Opus 5", "vendor": "Anthropic", "score": "60.7" },
+      { "rank": 2, "name": "Claude Fable 5", "vendor": "Anthropic", "score": "59.9" },
+      { "rank": 3, "name": "GPT-5.6 Sol", "vendor": "OpenAI", "score": "58.9" }
+    ],
+    "note": "Scores are the Artificial Analysis composite index, which measures intelligence rather than value. Gemini 3 Pro (Google) leads multimodal work rather than the composite. Grok 4.5 (xAI) is the cheapest model in the top 10 at $2 per million output tokens. And the open-weight field sits close behind the podium: GLM-5.2 beats GPT-5.5 on SWE-bench Pro. The podium is real, but most working decisions happen below it."
+  },
+  "tiers": [
+    {
+      "key": "frontier",
+      "name": "Frontier",
+      "range": "$2 to $50 / M out",
+      "models": "Claude Fable 5 / Opus 5 · GPT-5.6 Sol · Gemini 3 Pro · Grok 4.5",
+      "buy": "Deep reasoning, long-running agents, the hardest problems. Correctness matters more than cost here, which makes it a tier for funded work rather than routine volume. Grok 4.5 is the budget door in."
+    },
+    {
+      "key": "work",
+      "name": "Workhorse",
+      "range": "$0.75 to $15 / M out",
+      "models": "Claude Sonnet 5 · GPT-5.6 standard · Gemini 3.5 Flash · Grok 4.5 · Perplexity Sonar Pro · Nemotron 3 Ultra",
+      "buy": "Roughly 85 to 95 percent of frontier quality at a third the price or less. The sane default for production work across every vendor. Perplexity's Sonar models sit here with a twist: live web search and citations are bundled into the token price, so they answer from the current web rather than from memory."
+    },
+    {
+      "key": "small",
+      "name": "Small / fast",
+      "range": "$0.03 to $5 / M out",
+      "models": "Qwen 3.7 Flash · DeepSeek V4-Flash · Nemotron 3 Nano · Nemotron 3 Super · Claude Haiku 4.5 · Gemini Flash-Lite",
+      "buy": "Sorting, tagging, extracting, routing. Anything where volume is the whole problem and a large model is wasted money."
+    },
+    {
+      "key": "open",
+      "name": "Open-weight",
+      "range": "self-host or ~6-10x under proprietary",
+      "models": "GLM-5.2 · DeepSeek V4 Pro · Qwen 3 235B · MiniMax M3 · Kimi K2.6 · Mistral Large 3 · Llama 4 · Nemotron 3 (NVIDIA)",
+      "buy": "Models you can download and run yourself. The fastest-moving part of the market, and where most real volume goes. Each of these has a genuine specialty rather than being a cheap copy of a frontier model."
+    },
+    {
+      "key": "spec",
+      "name": "Specialist",
+      "range": "priced per task",
+      "models": "Image and video generation · embeddings · computer-use models",
+      "buy": "A different axis entirely. Ranked per task rather than on intelligence indexes, and out of scope for this map."
+    }
+  ],
+  "when": [
+    { "job": "Hardest reasoning, research, overnight agents", "pick": "Claude Fable 5 / Opus 5, GPT-5.6 Sol", "alt": "GLM-5.2 or DeepSeek V4 Pro (~6-10x cheaper)" },
+    { "job": "Questions about current events, with sources", "pick": "Sonar Reasoning Pro or Sonar Deep Research", "alt": "Sonar ($1/$1, search included)" },
+    { "job": "Writing and fixing code", "pick": "Claude Opus 5 or GPT-5.6 Sol", "alt": "GLM-5.2 (62.1% SWE-bench Pro), MiniMax M3" },
+    { "job": "Math-heavy or scientific reasoning", "pick": "Claude Fable 5, GPT-5.6 Sol", "alt": "Qwen 3 235B (77.2% GPQA), DeepSeek V4 Pro" },
+    { "job": "Everyday app or product work", "pick": "Claude Sonnet 5, GPT-5.6 standard", "alt": "Nemotron 3 Super, Gemini 3.5 Flash, Grok 4.5" },
+    { "job": "Images, video, dense documents", "pick": "Gemini 3 Pro", "alt": "MiniMax M3, Kimi K2.6, Gemini 3.5 Flash" },
+    { "job": "Writing and editing prose", "pick": "Claude Opus tier", "alt": "Claude Sonnet 5, Kimi K2.6" },
+    { "job": "Many languages, or EU data residency", "pick": "Mistral Large 3", "alt": "Qwen 3 235B" },
+    { "job": "Running privately on your own machine", "pick": "Qwen 3.6 (27B dense) or Nemotron 3 Nano", "alt": "Llama 4 Scout, DeepSeek distills" },
+    { "job": "Sorting or tagging huge amounts of text", "pick": "Claude Haiku 4.5, Gemini Flash-Lite", "alt": "Qwen 3.7 Flash ($0.03/$0.13, cheapest)" },
+    { "job": "Bulk coding volume through OpenRouter", "pick": "GLM-5.2, MiniMax M3", "alt": "Tencent Hy3 (free tier)" }
+  ],
+  "routing": [
+    { "when": "First", "title": "Prototype on a frontier model", "body": "Get the task working where capability is not the bottleneck, so you learn what the job actually requires before you optimize." },
+    { "when": "Then", "title": "Move volume to a cheap tier", "body": "Re-run the same prompts on a small or open model and compare the results. Most production work holds up, and the bill drops by an order of magnitude." },
+    { "when": "Keep", "title": "Escalate only what earns it", "body": "Send the requests that measurably fail on the cheap model back to the expensive one. That subset is usually far smaller than expected." },
+    { "when": "Always", "title": "Cache aggressively", "body": "Caching repeated context and using batch pricing cuts large-model costs substantially. It changes the absolute numbers, never the ordering." }
+  ],
+  "retentionCallout": {
+    "label": "If your company forbids data retention",
+    "paras": [
+      "Some frontier models require the vendor to keep your data for a period and are unavailable to companies that forbid it. Claude Fable 5 is one. Open-weight models sidestep the question entirely when you host them yourself. The tool below has a filter for this.",
+      "One caveat on that filter: Fable 5 is the only model here confirmed to require retention, so the others pass by default. Confirm the current terms with any vendor before you rely on it contractually."
+    ]
+  },
+  "jobs": [
+    ["coding", "Write and fix code"],
+    ["reasoning", "Hard research and analysis"],
+    ["search", "Search the live web with sources"],
+    ["production", "Everyday app or product work"],
+    ["multimodal", "Images, video, documents"],
+    ["writing", "Write and edit prose"],
+    ["math", "Math and science"],
+    ["bulk", "Sort or tag lots of text"],
+    ["multilingual", "Work in many languages"],
+    ["local", "Run privately on my machine"]
+  ],
+  "constraints": [
+    ["open", "I need to host it myself"],
+    ["oneGpu", "Must run on one ordinary GPU"],
+    ["m1", "Must handle very long documents"],
+    ["eu", "Must be a European company"],
+    ["zdr", "My company forbids data retention"]
+  ],
+  "budgets": [
+    ["any", "No limit"],
+    ["1", "Under $1"],
+    ["5", "Under $5"],
+    ["20", "Under $20"]
+  ],
+  "usage": [
+    ["light", "Just trying it out", 5, 1],
+    ["medium", "A small product", 50, 5],
+    ["heavy", "Heavy daily use", 200, 20],
+    ["bulk", "Large-scale pipeline", 500, 50]
+  ],
+  "sources": [
+    { "label": "llm-stats leaderboard", "url": "https://llm-stats.com/leaderboards/llm-leaderboard" },
+    { "label": "Vellum LLM leaderboard", "url": "https://www.vellum.ai/llm-leaderboard" },
+    { "label": "Shakudo top 9 LLMs", "url": "https://www.shakudo.io/blog/top-9-large-language-models" },
+    { "label": "Kilo OpenRouter rankings", "url": "https://kilo.ai/leaderboard" },
+    { "label": "KVMNODE OpenRouter trends", "url": "https://kvmnode.com/en/blog/2026-0604-openrouter-llm-rankings-trends-routing-guide.html" },
+    { "label": "Codersera: DeepSeek V4-Flash vs Qwen 3.7 Flash", "url": "https://codersera.com/blog/deepseek-v4-flash-vs-qwen-3-7-flash-2026/" },
+    { "label": "BenchLM API pricing", "url": "https://benchlm.ai/llm-pricing" },
+    { "label": "Techsy: Qwen vs DeepSeek vs GLM", "url": "https://techsy.io/en/blog/qwen-vs-deepseek-vs-glm" },
+    { "label": "Agyn: top open-weight LLMs", "url": "https://agyn.io/blog/top-open-weight-llms-2026" },
+    { "label": "llm-stats: Mistral Large 3", "url": "https://llm-stats.com/models/mistral-large-3-2509" },
+    { "label": "Serenities: Mistral 2026 guide", "url": "https://serenitiesai.com/articles/mistral-ai-models-2026-complete-guide" },
+    { "label": "MiniMax M3 guide", "url": "https://www.aimadetools.com/blog/minimax-m3-complete-guide/" },
+    { "label": "Kimi K2.6 vs MiniMax M3", "url": "https://docsbot.ai/models/compare/kimi-k2-6/minimax-m3" },
+    { "label": "DeepSeek V4 guide", "url": "https://codersera.com/blog/deepseek-v4-complete-guide-2026/" },
+    { "label": "Llama 4 guide", "url": "https://codersera.com/blog/llama-4-complete-guide-2026/" },
+    { "label": "Meta Llama pricing", "url": "https://aicostcheck.com/blog/meta-llama-pricing-guide-2026" },
+    { "label": "CloudZero: Perplexity API pricing", "url": "https://www.cloudzero.com/blog/perplexity-api-pricing/" },
+    { "label": "Sonar API pricing", "url": "https://pricepertoken.com/pricing-page/model/perplexity-sonar" },
+    { "label": "Nemotron 3 Ultra review", "url": "https://www.buildfastwithai.com/blogs/nvidia-nemotron-3-ultra-review-2026" },
+    { "label": "Nemotron 3 Super on OpenRouter", "url": "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b" },
+    { "label": "llm-stats: Nemotron 3 Nano", "url": "https://llm-stats.com/models/nemotron-3-nano-30b-a3b" }
+  ]
+}

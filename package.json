@@ -1,0 +1,19 @@
+{
+  "name": "model-map",
+  "version": "2026.8.0",
+  "private": true,
+  "description": "The Model Map — a priced, labelled field reference to the AI model market.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node src/build.mjs",
+    "check": "node src/validate.mjs && node src/build.mjs && node src/check-output.mjs",
+    "validate": "node src/validate.mjs",
+    "serve": "node src/serve.mjs",
+    "dev": "node src/build.mjs && node src/serve.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
