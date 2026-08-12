@@ -43,6 +43,7 @@ export function layout(opts) {
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(description)}">
+<meta name="author" content="Tiffany Coyle, Coyle Co">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F5F1EB" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14120F" media="(prefers-color-scheme: dark)">
@@ -83,6 +84,7 @@ ${body}
   <div class="wrap">
     <p><strong>${esc(siteName)}</strong> · data version ${esc(version)}, compiled ${esc(compiled)}. Prices are per million tokens, input / output. Fields marked &ldquo;not confirmed&rdquo; could not be verified against a primary source and are left out of all cost maths.</p>
     <p>Rankings and prices move monthly. Treat every figure here as a snapshot to check, not a quote. <a href="${rel}about/">How this data is put together</a> · <a href="${rel}api/models.json">Raw JSON</a> · <a href="${rel}styleguide/">Design system</a></p>
+    <p>An independent project by <a href="https://tiffanycoyle.com" rel="noopener noreferrer">Tiffany Coyle</a> / <a href="https://coyleco.no" rel="noopener noreferrer">Coyle Co</a>.</p>
   </div>
 </footer>
 ${scripts.map((s) => `<script src="${rel}assets/${esc(s)}" defer></script>`).join('\n')}
