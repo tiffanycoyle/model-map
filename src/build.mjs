@@ -125,12 +125,12 @@ function modelsCsv(data) {
 }
 
 const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Model Map">
-  <rect width="32" height="32" rx="7" fill="#22636B"/>
-  <path d="M5 21h22" stroke="#74B6BC" stroke-width="1.5" stroke-linecap="round" opacity=".45"/>
-  <circle cx="8" cy="21" r="2.6" fill="#74B6BC"/>
-  <circle cx="16" cy="14.5" r="2.6" fill="#FAFBF9"/>
-  <circle cx="24" cy="8" r="2.6" fill="#DB9C68"/>
-  <path d="M8 21l8-6.5L24 8" stroke="#FAFBF9" stroke-width="1.5" stroke-linejoin="round" fill="none" opacity=".65"/>
+  <rect width="32" height="32" rx="7" fill="#2F6BC8"/>
+  <path d="M5 21h22" stroke="#7CA8E8" stroke-width="1.5" stroke-linecap="round" opacity=".45"/>
+  <circle cx="8" cy="21" r="2.6" fill="#7CA8E8"/>
+  <circle cx="16" cy="14.5" r="2.6" fill="#FAF7F1"/>
+  <circle cx="24" cy="8" r="2.6" fill="#E8926F"/>
+  <path d="M8 21l8-6.5L24 8" stroke="#FAF7F1" stroke-width="1.5" stroke-linejoin="round" fill="none" opacity=".65"/>
 </svg>
 `;
 

@@ -44,8 +44,8 @@ export function layout(opts) {
 <title>${esc(fullTitle)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#EFF1EE" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#131920" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F1EB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14120F" media="(prefers-color-scheme: dark)">
 <meta name="generator" content="model-map static build">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(siteName)}">

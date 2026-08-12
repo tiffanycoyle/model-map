@@ -40,8 +40,8 @@ h3 { font-size: var(--fs-h3); margin: 0; font-weight: var(--fw-semi); }
    or weights color internally (prices, tiers, reference, build) are left on
    the default accent so a reader never has to ask what a color here means. */
 #board { --section-accent: var(--tier-work); }
-#costs { --section-accent: var(--tier-spec); }
-#when { --section-accent: var(--tier-small); }
+#costs { --section-accent: var(--tier-small); }
+#when { --section-accent: var(--tier-frontier); }
 #routing { --section-accent: var(--tier-work); }
 .lede { color: var(--ink-soft); max-width: var(--measure-prose); margin: 0 0 var(--sp-3); font-size: var(--fs-lede); }
 .sublede { color: var(--ink-soft); max-width: calc(var(--measure-prose) + 1rem); margin: 0 0 1.1rem; font-size: var(--fs-sublede); }

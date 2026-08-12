@@ -2,25 +2,27 @@
    Model Map Design System — Layer 1: Tokens
    Single source of truth. Nothing outside this file should hardcode a color.
 
-   Two of the five tier primitives (rust-700, moss-700) are tuned a shade
-   darker than the original design draft: at the draft values they landed at
-   4.27:1 and 4.47:1 against --bg, just under the 4.5:1 WCAG AA floor for the
-   small text they render as (tier names, "Open weights" labels). The hue is
-   unchanged; only lightness moved enough to clear 4.5:1.
+   Palette rebased on the Coyle Co brand (blue accent, near-black ink, warm
+   paper white, rust and green as secondary hues) in place of the earlier
+   teal-led draft. Two primitives (rust, muted) are tuned a shade darker than
+   their literal brand hex: at the literal values they landed at 4.14:1 and
+   4.21:1 against --bg, under the 4.5:1 WCAG AA floor for the small text they
+   render as. The hue is unchanged; only lightness moved enough to clear it.
+   Typography is untouched — this file only ever changes color.
    ========================================================================== */
 
 :root {
   /* --- Palette primitives (raw, not consumed directly by components) --- */
-  --c-teal-700: #22636B;
-  --c-teal-300: #74B6BC;
-  --c-rust-700: #9C5C2E;
-  --c-rust-300: #DB9C68;
-  --c-slate-700: #3A5A7E;
-  --c-slate-300: #8FB0D6;
-  --c-moss-700: #59733C;
-  --c-moss-300: #A6C182;
-  --c-plum-700: #6E4E72;
-  --c-plum-300: #BC95C0;
+  --c-blue-700: #2F6BC8;
+  --c-blue-300: #7CA8E8;
+  --c-navy-700: #234C82;
+  --c-navy-300: #6D93C4;
+  --c-green-700: #1E6B45;
+  --c-green-300: #6FBB93;
+  --c-rust-700: #BE472D;
+  --c-rust-300: #E8926F;
+  --c-muted-700: #746D62;
+  --c-muted-300: #B3A99A;
 
   /* --- Typography scale --- */
   --font-serif: Palatino, "Iowan Old Style", Charter, Georgia, serif;
@@ -91,55 +93,55 @@
 :root,
 :root[data-theme="light"] {
   color-scheme: light;
-  --bg: #EFF1EE;
-  --surface: #FAFBF9;
+  --bg: #F5F1EB;
+  --surface: #FAF7F1;
   --raised: #FFFFFF;
-  --ink: #1A2126;
-  --ink-soft: #47535C;
-  --ink-faint: #6C7780;
-  --line: #D9DED8;
-  --accent: var(--c-teal-700);
+  --ink: #0E0E0E;
+  --ink-soft: #43403A;
+  --ink-faint: #746D62;
+  --line: #D4CEC5;
+  --accent: var(--c-blue-700);
   --accent-ink: #FFFFFF;
-  --closed: var(--c-teal-700);
+  --closed: var(--c-blue-700);
   --open: var(--c-rust-700);
-  --tier-frontier: var(--c-teal-700);
-  --tier-work: var(--c-slate-700);
-  --tier-small: var(--c-moss-700);
+  --tier-frontier: var(--c-blue-700);
+  --tier-work: var(--c-navy-700);
+  --tier-small: var(--c-green-700);
   --tier-open: var(--c-rust-700);
-  --tier-spec: var(--c-plum-700);
+  --tier-spec: var(--c-muted-700);
   --chip-bg: rgba(0, 0, 0, 0.04);
-  --chip-line: #CCD3CC;
-  --callout-bg: #E6EDE7;
-  --bar: var(--c-plum-700);
-  --navbg: rgba(239, 241, 238, 0.93);
-  --focus: var(--c-teal-700);
-  --shadow: 0 1px 2px rgba(26, 33, 38, 0.06), 0 4px 12px rgba(26, 33, 38, 0.04);
+  --chip-line: #CBC3B6;
+  --callout-bg: #EDF2FC;
+  --bar: var(--c-green-700);
+  --navbg: rgba(245, 241, 235, 0.93);
+  --focus: var(--c-blue-700);
+  --shadow: 0 1px 2px rgba(14, 14, 14, 0.06), 0 4px 12px rgba(14, 14, 14, 0.04);
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #131920;
-  --surface: #1B232B;
-  --raised: #212A33;
-  --ink: #E7EBE9;
-  --ink-soft: #A7B2B6;
-  --ink-faint: #74808A;
-  --line: #2B343D;
-  --accent: var(--c-teal-300);
-  --accent-ink: #0E1519;
-  --closed: var(--c-teal-300);
+  --bg: #14120F;
+  --surface: #1C1A16;
+  --raised: #242119;
+  --ink: #F2EEE6;
+  --ink-soft: #C7BFB2;
+  --ink-faint: #948C7D;
+  --line: #322E27;
+  --accent: var(--c-blue-300);
+  --accent-ink: #14120F;
+  --closed: var(--c-blue-300);
   --open: var(--c-rust-300);
-  --tier-frontier: var(--c-teal-300);
-  --tier-work: var(--c-slate-300);
-  --tier-small: var(--c-moss-300);
+  --tier-frontier: var(--c-blue-300);
+  --tier-work: var(--c-navy-300);
+  --tier-small: var(--c-green-300);
   --tier-open: var(--c-rust-300);
-  --tier-spec: var(--c-plum-300);
+  --tier-spec: var(--c-muted-300);
   --chip-bg: rgba(255, 255, 255, 0.05);
-  --chip-line: #38434D;
-  --callout-bg: #1E2A28;
-  --bar: var(--c-plum-300);
-  --navbg: rgba(19, 25, 32, 0.93);
-  --focus: var(--c-teal-300);
+  --chip-line: #3D3830;
+  --callout-bg: #182430;
+  --bar: var(--c-green-300);
+  --navbg: rgba(20, 18, 15, 0.93);
+  --focus: var(--c-blue-300);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -154,28 +156,28 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --bg: #131920;
-    --surface: #1B232B;
-    --raised: #212A33;
-    --ink: #E7EBE9;
-    --ink-soft: #A7B2B6;
-    --ink-faint: #74808A;
-    --line: #2B343D;
-    --accent: var(--c-teal-300);
-    --accent-ink: #0E1519;
-    --closed: var(--c-teal-300);
+    --bg: #14120F;
+    --surface: #1C1A16;
+    --raised: #242119;
+    --ink: #F2EEE6;
+    --ink-soft: #C7BFB2;
+    --ink-faint: #948C7D;
+    --line: #322E27;
+    --accent: var(--c-blue-300);
+    --accent-ink: #14120F;
+    --closed: var(--c-blue-300);
     --open: var(--c-rust-300);
-    --tier-frontier: var(--c-teal-300);
-    --tier-work: var(--c-slate-300);
-    --tier-small: var(--c-moss-300);
+    --tier-frontier: var(--c-blue-300);
+    --tier-work: var(--c-navy-300);
+    --tier-small: var(--c-green-300);
     --tier-open: var(--c-rust-300);
-    --tier-spec: var(--c-plum-300);
+    --tier-spec: var(--c-muted-300);
     --chip-bg: rgba(255, 255, 255, 0.05);
-    --chip-line: #38434D;
-    --callout-bg: #1E2A28;
-    --bar: var(--c-plum-300);
-    --navbg: rgba(19, 25, 32, 0.93);
-    --focus: var(--c-teal-300);
+    --chip-line: #3D3830;
+    --callout-bg: #182430;
+    --bar: var(--c-green-300);
+    --navbg: rgba(20, 18, 15, 0.93);
+    --focus: var(--c-blue-300);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 }

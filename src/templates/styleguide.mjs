@@ -10,28 +10,28 @@ import { esc } from '../lib/util.mjs';
  */
 
 const SEM = [
-  ['--bg', 'tok-bg', 'Page background', '#EFF1EE', '#131920'],
-  ['--surface', 'tok-surface', 'Panel', '#FAFBF9', '#1B232B'],
-  ['--raised', 'tok-raised', 'Elevated', '#FFFFFF', '#212A33'],
-  ['--ink', 'tok-ink', 'Primary text', '#1A2126', '#E7EBE9'],
-  ['--ink-soft', 'tok-ink-soft', 'Secondary text', '#47535C', '#A7B2B6'],
-  ['--ink-faint', 'tok-ink-faint', 'Tertiary text', '#6C7780', '#74808A'],
-  ['--line', 'tok-line', 'Border', '#D9DED8', '#2B343D'],
-  ['--chip-line', 'tok-chip-line', 'Chip border', '#CCD3CC', '#38434D'],
-  ['--accent', 'tok-accent', 'Accent', '#22636B', '#74B6BC'],
-  ['--accent-ink', 'tok-accent-ink', 'On accent', '#FFFFFF', '#0E1519'],
-  ['--callout-bg', 'tok-callout-bg', 'Callout', '#E6EDE7', '#1E2A28'],
-  ['--bar', 'tok-bar', 'Data bar', '#6E4E72', '#BC95C0'],
+  ['--bg', 'tok-bg', 'Page background', '#F5F1EB', '#14120F'],
+  ['--surface', 'tok-surface', 'Panel', '#FAF7F1', '#1C1A16'],
+  ['--raised', 'tok-raised', 'Elevated', '#FFFFFF', '#242119'],
+  ['--ink', 'tok-ink', 'Primary text', '#0E0E0E', '#F2EEE6'],
+  ['--ink-soft', 'tok-ink-soft', 'Secondary text', '#43403A', '#C7BFB2'],
+  ['--ink-faint', 'tok-ink-faint', 'Tertiary text', '#746D62', '#948C7D'],
+  ['--line', 'tok-line', 'Border', '#D4CEC5', '#322E27'],
+  ['--chip-line', 'tok-chip-line', 'Chip border', '#CBC3B6', '#3D3830'],
+  ['--accent', 'tok-accent', 'Accent', '#2F6BC8', '#7CA8E8'],
+  ['--accent-ink', 'tok-accent-ink', 'On accent', '#FFFFFF', '#14120F'],
+  ['--callout-bg', 'tok-callout-bg', 'Callout', '#EDF2FC', '#182430'],
+  ['--bar', 'tok-bar', 'Data bar', '#1E6B45', '#6FBB93'],
 ];
 
 const SIG = [
-  ['--closed', 'tok-closed', 'Closed weights', '#22636B', '#74B6BC'],
-  ['--open', 'tok-open', 'Open weights', '#9C5C2E', '#DB9C68'],
-  ['--tier-frontier', 'tok-tier-frontier', 'Frontier', '#22636B', '#74B6BC'],
-  ['--tier-work', 'tok-tier-work', 'Workhorse', '#3A5A7E', '#8FB0D6'],
-  ['--tier-small', 'tok-tier-small', 'Small', '#59733C', '#A6C182'],
-  ['--tier-open', 'tok-tier-open', 'Open', '#9C5C2E', '#DB9C68'],
-  ['--tier-spec', 'tok-tier-spec', 'Specialist', '#6E4E72', '#BC95C0'],
+  ['--closed', 'tok-closed', 'Closed weights', '#2F6BC8', '#7CA8E8'],
+  ['--open', 'tok-open', 'Open weights', '#BE472D', '#E8926F'],
+  ['--tier-frontier', 'tok-tier-frontier', 'Frontier', '#2F6BC8', '#7CA8E8'],
+  ['--tier-work', 'tok-tier-work', 'Workhorse', '#234C82', '#6D93C4'],
+  ['--tier-small', 'tok-tier-small', 'Small', '#1E6B45', '#6FBB93'],
+  ['--tier-open', 'tok-tier-open', 'Open', '#BE472D', '#E8926F'],
+  ['--tier-spec', 'tok-tier-spec', 'Specialist', '#746D62', '#B3A99A'],
 ];
 
 const SPACE = [
