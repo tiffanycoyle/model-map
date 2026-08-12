@@ -1,13 +1,29 @@
 import {
-  esc, safeUrl, hasFullPrice, monthlyCost, money, priceLabel, logPosition, monthsSince,
+  esc, safeUrl, hasFullPrice, monthlyCost, money, priceLabel, logPosition, monthsSince, tierVar,
 } from '../lib/util.mjs';
 
-/** Colour token for a model's dot on the price chart. */
-function markTier(m) {
-  if (m.weights === 'open') return 'var(--tier-open)';
-  if (m.pout >= 20) return 'var(--tier-frontier)';
-  if (m.pout >= 5) return 'var(--tier-small)';
-  return 'var(--tier-work)';
+/**
+ * Wraps every model name mentioned in free-text prose with a span colored by
+ * that model's own tier, so e.g. the "Bootstrapped pick" column in "What to
+ * use when" reads its actual mix of tiers instead of one flat color. Names
+ * are matched longest-first so "Sonar Pro" wins over "Sonar" at the same
+ * position. A name not found in `models` (an untracked variant mentioned in
+ * passing, like "Llama 4 Scout") is left as plain text — there is no tier to
+ * color it with.
+ */
+function colorizeMentions(text, models) {
+  const byLength = models.slice().sort((a, b) => b.name.length - a.name.length);
+  if (!byLength.length) return esc(text);
+
+  const tierByName = new Map(byLength.map((m) => [m.name, m.tier]));
+  const pattern = new RegExp(
+    '(' + byLength.map((m) => m.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')'
+  );
+
+  return text.split(pattern).map((part) => {
+    const tier = tierByName.get(part);
+    return tier ? `<span class="mention tier-${esc(tier)}">${esc(part)}</span>` : esc(part);
+  }).join('');
 }
 
 /**
@@ -41,7 +57,7 @@ function priceChart(models) {
   const marks = plotted.map((m, i) => {
     const left = logPosition(m.pout, min, max).toFixed(2);
     const dir = i % 2 === 0 ? 'up' : 'down';
-    css.push(`#pm-${m.id} { left: ${left}%; --t: ${markTier(m)}; }`);
+    css.push(`#pm-${m.id} { left: ${left}%; --t: ${tierVar(m)}; }`);
 
     const label =
       `<span class="mlabel">${esc(m.name)}<span class="mprice">$${esc(m.pout)}</span></span>`;
@@ -101,7 +117,9 @@ function referenceRow(m) {
   ).join('');
 
   // data-* attributes drive client-side search and sort without re-fetching.
-  return `  <details class="mrow" id="model-${esc(m.id)}"
+  // tier-${m.tier} sets --t so hovering the name shows this model's own tier
+  // color, not a single flat accent for every row.
+  return `  <details class="mrow tier-${esc(m.tier)}" id="model-${esc(m.id)}"
     data-name="${esc(m.name.toLowerCase())}"
     data-vendor="${esc(m.vendor.toLowerCase())}"
     data-jobs="${esc(m.jobs.join(' '))}"
@@ -295,7 +313,7 @@ ${bars.html}
         <caption class="visually-hidden">Recommended models for each kind of job, with a cheaper alternative</caption>
         <thead><tr><th scope="col">Job</th><th scope="col">If budget allows</th><th scope="col">Bootstrapped pick</th></tr></thead>
         <tbody>
-${content.when.map((r) => `          <tr><th scope="row">${esc(r.job)}</th><td class="pick">${esc(r.pick)}</td><td class="alt">${esc(r.alt)}</td></tr>`).join('\n')}
+${content.when.map((r) => `          <tr><th scope="row">${esc(r.job)}</th><td class="pick">${esc(r.pick)}</td><td class="alt">${colorizeMentions(r.alt, models)}</td></tr>`).join('\n')}
         </tbody>
       </table>
     </div>

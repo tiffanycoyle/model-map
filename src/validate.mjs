@@ -7,6 +7,7 @@ const REQUIRED_STRINGS = ['id', 'name', 'vendor', 'country', 'license', 'best'];
 const REQUIRED_BOOLS = ['oneGpu', 'eu', 'zdr', 'm1'];
 const NULLABLE_NUMBERS = ['pin', 'pout'];
 const WEIGHTS = new Set(['open', 'closed']);
+const TIERS = new Set(['frontier', 'work', 'small', 'open', 'spec']);
 const ID_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
 
 export function validate(data, content) {
@@ -69,6 +70,10 @@ export function validate(data, content) {
     }
     if (m.weights === 'open' && m.oneGpu === undefined) {
       push(`${where}: open-weight models must state "oneGpu"`);
+    }
+
+    if (!TIERS.has(m.tier)) {
+      push(`${where}: "tier" must be one of frontier, work, small, open, spec`);
     }
 
     if (typeof m.rank !== 'number' || m.rank < 0 || m.rank > 100) {

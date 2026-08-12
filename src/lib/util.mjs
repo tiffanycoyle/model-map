@@ -40,6 +40,24 @@ export function safeUrl(url) {
   return '#';
 }
 
+/**
+ * CSS custom property for a model's tier, keyed off the editorial "tier"
+ * field (not derived from price — see the "tier" note in models.json for why
+ * a price threshold can't do this job). Falls back to "work" for anything
+ * malformed rather than throwing, since this only ever feeds a color.
+ */
+const TIER_VARS = {
+  frontier: 'var(--tier-frontier)',
+  work: 'var(--tier-work)',
+  small: 'var(--tier-small)',
+  open: 'var(--tier-open)',
+  spec: 'var(--tier-spec)',
+};
+
+export function tierVar(model) {
+  return TIER_VARS[model.tier] || TIER_VARS.work;
+}
+
 export function hasFullPrice(model) {
   return typeof model.pin === 'number' && typeof model.pout === 'number';
 }

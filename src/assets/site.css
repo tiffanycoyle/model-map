@@ -277,7 +277,7 @@ details.mrow summary::after {
 }
 details.mrow[open] summary::after { content: "\2013"; }
 details.mrow summary { grid-template-columns: 1fr auto auto; }
-details.mrow summary:hover .sname { color: var(--accent); }
+details.mrow summary:hover .sname { color: var(--t, var(--accent)); }
 .sname { font-weight: var(--fw-semi); font-size: var(--fs-h3); }
 .sname .sorigin { display: block; font-weight: var(--fw-normal); font-size: 0.77rem; color: var(--ink-faint); margin-top: 0.1rem; }
 .sprice {
@@ -335,6 +335,10 @@ tbody th {
 tr:last-child td, tr:last-child th { border-bottom: none; }
 td.pick { font-weight: var(--fw-medium); color: var(--section-accent, var(--ink)); }
 td.alt { color: var(--ink-soft); }
+/* A mentioned model name within prose (the "Bootstrapped pick" column),
+   colored by that specific model's own tier rather than the column's
+   section accent — several tiers usually appear in the same column. */
+td.alt .mention { color: var(--t, inherit); font-weight: var(--fw-medium); }
 .tablenote { color: var(--ink-faint); font-size: 0.82rem; margin: 0.6rem 0 0; }
 
 /* ---------- Compare table ---------- */
