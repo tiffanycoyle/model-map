@@ -21,7 +21,7 @@ const SEM = [
   ['--accent', 'tok-accent', 'Accent', '#22636B', '#74B6BC'],
   ['--accent-ink', 'tok-accent-ink', 'On accent', '#FFFFFF', '#0E1519'],
   ['--callout-bg', 'tok-callout-bg', 'Callout', '#E6EDE7', '#1E2A28'],
-  ['--bar', 'tok-bar', 'Data bar', '#22636B', '#74B6BC'],
+  ['--bar', 'tok-bar', 'Data bar', '#6E4E72', '#BC95C0'],
 ];
 
 const SIG = [

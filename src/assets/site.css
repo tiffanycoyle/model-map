@@ -30,8 +30,19 @@ h3 { font-size: var(--fs-h3); margin: 0; font-weight: var(--fw-semi); }
 
 .eyebrow {
   font-size: var(--fs-eyebrow); text-transform: uppercase; letter-spacing: var(--ls-eyebrow);
-  color: var(--accent); font-weight: var(--fw-semi); margin: 0 0 var(--sp-1);
+  color: var(--section-accent, var(--accent)); font-weight: var(--fw-semi); margin: 0 0 var(--sp-1);
 }
+
+/* ---------- Per-section identity color ----------
+   A handful of sections carry their own ambient hue from the same five-hue
+   palette used for tiers, purely for wayfinding as you scroll — never to
+   imply a tier or weights classification. Sections that already show tier
+   or weights color internally (prices, tiers, reference, build) are left on
+   the default accent so a reader never has to ask what a color here means. */
+#board { --section-accent: var(--tier-work); }
+#costs { --section-accent: var(--tier-spec); }
+#when { --section-accent: var(--tier-small); }
+#routing { --section-accent: var(--tier-work); }
 .lede { color: var(--ink-soft); max-width: var(--measure-prose); margin: 0 0 var(--sp-3); font-size: var(--fs-lede); }
 .sublede { color: var(--ink-soft); max-width: calc(var(--measure-prose) + 1rem); margin: 0 0 1.1rem; font-size: var(--fs-sublede); }
 header.page { padding: var(--sp-8) 0 var(--sp-6); }
@@ -185,7 +196,7 @@ nav.sticky a.current { color: var(--ink); border-bottom-color: var(--accent); }
 .board-row .name { font-weight: var(--fw-semi); }
 .board-row .vendor { color: var(--ink-faint); font-weight: var(--fw-normal); font-size: 0.88em; margin-left: var(--sp-4); }
 .board-row .score {
-  color: var(--accent); font-weight: var(--fw-medium); font-family: var(--font-mono);
+  color: var(--section-accent, var(--accent)); font-weight: var(--fw-medium); font-family: var(--font-mono);
   font-variant-numeric: tabular-nums; font-size: 0.88rem;
 }
 .board-note { color: var(--ink-soft); font-size: 0.92rem; max-width: var(--measure-wide); margin-top: 0.9rem; }
@@ -322,7 +333,7 @@ tbody th {
   font-weight: var(--fw-medium);
 }
 tr:last-child td, tr:last-child th { border-bottom: none; }
-td.pick { font-weight: var(--fw-medium); }
+td.pick { font-weight: var(--fw-medium); color: var(--section-accent, var(--ink)); }
 td.alt { color: var(--ink-soft); }
 .tablenote { color: var(--ink-faint); font-size: 0.82rem; margin: 0.6rem 0 0; }
 
@@ -368,14 +379,14 @@ td.alt { color: var(--ink-soft); }
   background: var(--surface); border: var(--border-hair) solid var(--line); border-radius: 6px;
   padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.35rem;
 }
-.step .sn { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--accent); font-weight: var(--fw-bold); }
+.step .sn { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--section-accent, var(--accent)); font-weight: var(--fw-bold); }
 .step p { margin: 0; color: var(--ink-soft); font-size: var(--fs-sublede); }
 .callout {
-  background: var(--callout-bg); border-left: var(--border-rule) solid var(--accent);
+  background: var(--callout-bg); border-left: var(--border-rule) solid var(--section-accent, var(--accent));
   border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 0.95rem 1.2rem; max-width: var(--measure-wide); margin-top: 1.5rem;
 }
 .callout p { margin: 0.3rem 0; font-size: var(--fs-sublede); }
-.callout .label { font-size: var(--fs-eyebrow); text-transform: uppercase; letter-spacing: var(--ls-label); color: var(--accent); font-weight: var(--fw-bold); }
+.callout .label { font-size: var(--fs-eyebrow); text-transform: uppercase; letter-spacing: var(--ls-label); color: var(--section-accent, var(--accent)); font-weight: var(--fw-bold); }
 
 /* ---------- Picker ---------- */
 .picker {
