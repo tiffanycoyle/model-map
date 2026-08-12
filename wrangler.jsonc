@@ -1,0 +1,13 @@
+{
+  // Cloudflare Workers static-assets config, for the "Workers Builds" Git
+  // integration flow. This is a plain static site: no Worker code, no
+  // routes, just the built dist/ directory served as assets.
+  "name": "model-map",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./dist",
+    // build.mjs already generates a real 404.html; let the platform serve it
+    // for unmatched paths instead of its own default not-found response.
+    "not_found_handling": "404-page"
+  }
+}
