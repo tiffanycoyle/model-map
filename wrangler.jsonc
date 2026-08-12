@@ -9,5 +9,22 @@
     // build.mjs already generates a real 404.html; let the platform serve it
     // for unmatched paths instead of its own default not-found response.
     "not_found_handling": "404-page"
+  },
+  // Matches what's currently set on the Worker in the dashboard, so a
+  // fresh deploy from this file can't silently drift from it.
+  "observability": {
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true,
+      "persist": true,
+      "head_sampling_rate": 1
+    }
   }
 }
