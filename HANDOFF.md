@@ -180,36 +180,60 @@ one's a hard rule documented on the style guide page itself.
    swatch labels used to read "#F5F1EB light · #14120F dark", which read
    as ambiguous about what "light" and "dark" modified. Now parenthesized:
    "#F5F1EB (light) · #14120F (dark)" (`src/templates/styleguide.mjs`).
-10. **Started a Cloudflare Pages deploy.** Goal: `modelmap.tiffanycoyle.com`
-    as the canonical URL, no redirect from `tiffanycoyle.com/model-map`
-    (considered, dropped, not needed). tiffanycoyle.com's DNS zone is on
-    Cloudflare; the site itself is hosted elsewhere.
+10. **Started a Cloudflare deploy.** Canonical URL is
+    **`model-map.tiffanycoyle.com`** (hyphenated, matches the repo and
+    Worker name). An earlier round considered `modelmap.tiffanycoyle.com`
+    (no hyphen); that's superseded, don't use it. Also considered and
+    dropped: a redirect from `tiffanycoyle.com/model-map`. Not needed.
+    tiffanycoyle.com's DNS zone is on Cloudflare; the site itself is
+    hosted elsewhere.
     No Cloudflare tool access in this session: the account has a "Cloudflare
     Developer Platform" connector installed, but `enabledInChat` stays
     false no matter how many times it's toggled or rechecked. Everything
-    Cloudflare-side has to go through Tiffany manually.
-    Her first attempt (connecting the repo directly from inside Cloudflare)
-    failed. Cause: Cloudflare's dashboard now defaults new Git-connected
-    projects into "Workers Builds" rather than classic Pages. That flow has
-    no output-directory field at all; it reads the assets directory from a
-    wrangler config file, which this repo didn't have. Added
-    `wrangler.jsonc` (`assets.directory: "./dist"`,
-    `not_found_handling: "404-page"` so it serves the real 404.html
-    build.mjs generates). Commands for that flow: build `node
-    src/build.mjs`, deploy `npx wrangler deploy`, and if a third
-    "version"-style field shows up for non-production branches, `npx
-    wrangler versions upload`.
-    Still needed, all manual, none of it done yet as of this entry: enter
-    those commands and the `NODE_VERSION=22` / `SITE_URL=https://modelmap.
-    tiffanycoyle.com` env vars in the project settings, retry the deploy,
-    then add `modelmap.tiffanycoyle.com` as a custom domain once a
-    deployment actually succeeds.
+    Cloudflare-side goes through Tiffany manually; diagnosis happens by
+    querying the live URL and DNS directly (curl, and
+    `https://dns.google/resolve?name=...&type=A` for a real DNS-over-HTTPS
+    answer when curl's own results look inconsistent, e.g. this session's
+    outbound proxy returned a 502 on one attempt that had nothing to do
+    with the actual domain).
+    The deploy itself now works: it's live at the Worker's own
+    `*.workers.dev` address. Two problems since, both about attaching the
+    custom domain, not the build:
+    - First attempt (connecting the repo directly from inside Cloudflare)
+      failed outright. Cause: Cloudflare's dashboard now defaults new
+      Git-connected projects into "Workers Builds" rather than classic
+      Pages. That flow has no output-directory field at all; it reads the
+      assets directory from a wrangler config file, which this repo didn't
+      have. Added `wrangler.jsonc` (`assets.directory: "./dist"`,
+      `not_found_handling: "404-page"` so it serves the real 404.html
+      build.mjs generates). Commands for that flow: build `node
+      src/build.mjs`, deploy `npx wrangler deploy`, and if a third
+      "version"-style field shows up for non-production branches, `npx
+      wrangler versions upload`.
+    - After that, the domain still didn't resolve. Cause: a manually
+      created DNS CNAME pointed at the `*.workers.dev` address, proxied
+      through Cloudflare. That returns an HTTP 522 (edge reached, couldn't
+      reach the "origin"), because a proxied CNAME to a workers.dev
+      address isn't how Workers custom domains are supposed to attach.
+      The correct path is the Worker's own Settings → Domains and Routes
+      → Add Custom Domain, which provisions the DNS record itself, wired
+      directly to the Worker rather than treated as an external origin.
+    Still open as of this entry: the custom domain add hasn't actually
+    completed yet. A direct DNS query for `model-map.tiffanycoyle.com`
+    returns NXDOMAIN (confirmed via dns.google), meaning nothing is
+    pointing at the Worker at all right now. Also still needed: update the
+    `SITE_URL` env var on the Worker to `https://model-map.tiffanycoyle.com`
+    (no trailing slash) to match, since an earlier instruction had her set
+    it to the no-hyphen version.
 
 ## Open items / ideas not yet acted on
 
-- **Cloudflare Pages deploy is unfinished.** `wrangler.jsonc` is in the repo.
-  Tiffany still needs to enter the build/deploy commands and env vars in the
-  Cloudflare project settings (see History entry 10 above), retry the
-  deploy, and add the `modelmap.tiffanycoyle.com` custom domain once it
-  succeeds. Ask for the actual build log error text if it fails again,
-  rather than guessing at a second cause blind.
+- **Cloudflare custom domain isn't attached yet.** `model-map.tiffanycoyle.com`
+  resolves to nothing (NXDOMAIN) as of the last entry above. Tiffany needs
+  to add it via the Worker's Settings → Domains and Routes → Add Custom
+  Domain (not the general DNS records page: see History entry 10), and
+  update `SITE_URL` to match. The build and deploy commands themselves
+  already work; this is the one remaining step. If it's still broken after
+  that, get the exact error and check DNS directly
+  (`dns.google/resolve?name=model-map.tiffanycoyle.com&type=A`) before
+  guessing at a new cause.
