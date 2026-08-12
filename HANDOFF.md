@@ -218,22 +218,30 @@ one's a hard rule documented on the style guide page itself.
       The correct path is the Worker's own Settings → Domains and Routes
       → Add Custom Domain, which provisions the DNS record itself, wired
       directly to the Worker rather than treated as an external origin.
-    Still open as of this entry: the custom domain add hasn't actually
-    completed yet. A direct DNS query for `model-map.tiffanycoyle.com`
-    returns NXDOMAIN (confirmed via dns.google), meaning nothing is
-    pointing at the Worker at all right now. Also still needed: update the
-    `SITE_URL` env var on the Worker to `https://model-map.tiffanycoyle.com`
-    (no trailing slash) to match, since an earlier instruction had her set
-    it to the no-hyphen version.
+    **Resolved.** `model-map.tiffanycoyle.com` is live and confirmed
+    working. Custom domain is attached correctly.
+11. **Code license changed from MIT to all rights reserved.** The repo
+    being public and MIT licensed meant anyone had explicit legal
+    permission to clone the whole site (code, design, every Coyle Co
+    color) and relaunch it as their own, no credit needed. That's separate
+    from the data licensing question and not something Tiffany wants open.
+    `LICENSE` and the README's Licence section rewritten: code is all
+    rights reserved now, `data/models.json` keeps its CC BY 4.0 licence
+    unchanged (that one was a deliberate attribution/visibility choice and
+    stays). Repo visibility itself (public → private) still needs a manual
+    change in GitHub Settings → General → Danger Zone → Change repository
+    visibility. No tool available in this session can flip that setting.
+    Caveat given to Tiffany: a private repo can't publish GitHub Pages
+    unless she's on GitHub Pro or a paid org plan, so
+    `tiffanycoyle.github.io/model-map` may go dark. The live site on
+    Cloudflare is a separate Git integration and is unaffected either way.
 
 ## Open items / ideas not yet acted on
 
-- **Cloudflare custom domain isn't attached yet.** `model-map.tiffanycoyle.com`
-  resolves to nothing (NXDOMAIN) as of the last entry above. Tiffany needs
-  to add it via the Worker's Settings → Domains and Routes → Add Custom
-  Domain (not the general DNS records page: see History entry 10), and
-  update `SITE_URL` to match. The build and deploy commands themselves
-  already work; this is the one remaining step. If it's still broken after
-  that, get the exact error and check DNS directly
+- **Repo visibility (public → private) not yet done.** Needs a manual
+  change in GitHub Settings → General → Danger Zone. See History entry 11.
+  Flag the GitHub Pages caveat again if this comes up: it may silently
+  break the `tiffanycoyle.github.io/model-map` mirror depending on her
+  plan. The live Cloudflare site is unaffected.
   (`dns.google/resolve?name=model-map.tiffanycoyle.com&type=A`) before
   guessing at a new cause.
