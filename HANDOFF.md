@@ -235,6 +235,13 @@ one's a hard rule documented on the style guide page itself.
     unless she's on GitHub Pro or a paid org plan, so
     `tiffanycoyle.github.io/model-map` may go dark. The live site on
     Cloudflare is a separate Git integration and is unaffected either way.
+12. **Pinned observability settings in wrangler.jsonc.** Tiffany pasted
+    what's currently configured on the Worker in the dashboard (logs and
+    traces on, top-level `enabled: false`, all at full sampling). Added
+    verbatim so a redeploy from a fresh clone can't silently reset it to
+    wrangler's defaults. If this Worker ever needs its logs/traces
+    actually toggled, change it here first, then in the dashboard, so the
+    two stay in sync. Don't edit one without the other.
 
 ## Open items / ideas not yet acted on
 
