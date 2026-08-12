@@ -91,7 +91,7 @@ function costBars(models, mIn, mOut) {
   const html = priced.map(({ m, cost }) => {
     const width = Math.max(0.4, (cost / top) * 100).toFixed(2);
     const origin = m.weights === 'open' ? 'open weight' : m.vendor;
-    css.push(`#bf-${m.id} { width: ${width}%; }`);
+    css.push(`#bf-${m.id} { width: ${width}%; --t: ${tierVar(m)}; }`);
     return `      <div class="bar-row">
         <span class="blabel">${esc(m.name)}<span class="bvendor">${esc(origin)} · $${esc(m.pin)} / $${esc(m.pout)}</span></span>
         <div class="bar-track"><div class="bar-fill" id="bf-${esc(m.id)}"></div></div>
