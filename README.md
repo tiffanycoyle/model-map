@@ -158,7 +158,10 @@ means search engines and link previews see the actual content.
 
 ## Licence
 
-Code is MIT. The compiled dataset in `data/models.json` is published under
+All rights reserved on the code, design, and content. It may not be copied,
+modified, or used to build a derivative site without permission. The compiled
+dataset in `data/models.json` is a separate exception, published under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): use it, just credit
-it. Figures are gathered from the public sources listed on the About page and on
-the site footer. Each vendor's pricing remains theirs to change without notice.
+it. That licence covers the dataset only. Figures are gathered from the public
+sources listed on the About page and on the site footer. Each vendor's pricing
+remains theirs to change without notice.
