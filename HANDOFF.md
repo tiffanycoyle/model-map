@@ -180,8 +180,36 @@ one's a hard rule documented on the style guide page itself.
    swatch labels used to read "#F5F1EB light · #14120F dark", which read
    as ambiguous about what "light" and "dark" modified. Now parenthesized:
    "#F5F1EB (light) · #14120F (dark)" (`src/templates/styleguide.mjs`).
+10. **Started a Cloudflare Pages deploy.** Goal: `modelmap.tiffanycoyle.com`
+    as the canonical URL, no redirect from `tiffanycoyle.com/model-map`
+    (considered, dropped, not needed). tiffanycoyle.com's DNS zone is on
+    Cloudflare; the site itself is hosted elsewhere.
+    No Cloudflare tool access in this session: the account has a "Cloudflare
+    Developer Platform" connector installed, but `enabledInChat` stays
+    false no matter how many times it's toggled or rechecked. Everything
+    Cloudflare-side has to go through Tiffany manually.
+    Her first attempt (connecting the repo directly from inside Cloudflare)
+    failed. Cause: Cloudflare's dashboard now defaults new Git-connected
+    projects into "Workers Builds" rather than classic Pages. That flow has
+    no output-directory field at all; it reads the assets directory from a
+    wrangler config file, which this repo didn't have. Added
+    `wrangler.jsonc` (`assets.directory: "./dist"`,
+    `not_found_handling: "404-page"` so it serves the real 404.html
+    build.mjs generates). Commands for that flow: build `node
+    src/build.mjs`, deploy `npx wrangler deploy`, and if a third
+    "version"-style field shows up for non-production branches, `npx
+    wrangler versions upload`.
+    Still needed, all manual, none of it done yet as of this entry: enter
+    those commands and the `NODE_VERSION=22` / `SITE_URL=https://modelmap.
+    tiffanycoyle.com` env vars in the project settings, retry the deploy,
+    then add `modelmap.tiffanycoyle.com` as a custom domain once a
+    deployment actually succeeds.
 
 ## Open items / ideas not yet acted on
 
-- None outstanding as of the last entry above. If the user raises something
-  and it isn't done in the same turn, log it here so it isn't lost.
+- **Cloudflare Pages deploy is unfinished.** `wrangler.jsonc` is in the repo.
+  Tiffany still needs to enter the build/deploy commands and env vars in the
+  Cloudflare project settings (see History entry 10 above), retry the
+  deploy, and add the `modelmap.tiffanycoyle.com` custom domain once it
+  succeeds. Ask for the actual build log error text if it fails again,
+  rather than guessing at a second cause blind.
