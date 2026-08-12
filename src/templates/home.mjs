@@ -189,7 +189,7 @@ export function homePage(data, content, now) {
   const topRank = defaultHits.reduce((acc, m) => Math.max(acc, m.rank), 0);
 
   const staleNotice = staleMonths >= 3
-    ? `  <div class="wrap"><p class="stale" role="status">Heads up: this data was compiled ${esc(staleMonths)} months ago (${esc(data.compiled)}). Model prices move fast &mdash; verify anything you are about to rely on.</p></div>\n`
+    ? `  <div class="wrap"><p class="stale" role="status">Heads up: this data was compiled ${esc(staleMonths)} months ago (${esc(data.compiled)}). Model prices move fast. Verify anything you are about to rely on.</p></div>\n`
     : '';
 
   const html = `${staleNotice}  <div class="wrap">

@@ -26,7 +26,7 @@ export function aboutPage(data, content) {
       <h2>How prices are handled</h2>
       <p>Prices are US dollars per million tokens, quoted as input / output, at standard on-demand rates. Batch pricing, volume commitments, and provider-specific discounts are not included, because they vary too much to state honestly in a single number.</p>
       <p>Where a price could not be verified against a primary source, the field is <em>null</em> rather than estimated. Those models are shown with &ldquo;not confirmed&rdquo; and are excluded from every cost calculation on the site. This is why some well-known models have no monthly estimate: an unverified number that looks precise is worse than no number.</p>
-      <p>The cost estimator applies a cache discount of one tenth of the list input rate to the share of input you say is cached. That matches the common vendor rate, but it is a simplification &mdash; check your vendor&rsquo;s exact cache-read and cache-write pricing before budgeting on it.</p>
+      <p>The cost estimator applies a cache discount of one tenth of the list input rate to the share of input you say is cached. That matches the common vendor rate, but it is a simplification. Check your vendor&rsquo;s exact cache-read and cache-write pricing before budgeting on it.</p>
     </section>
 
     <section>
@@ -37,7 +37,7 @@ export function aboutPage(data, content) {
 
     <section>
       <h2>What this does not cover</h2>
-      <p>Image, video, audio, and embedding models are out of scope &mdash; they are ranked per task rather than on a single intelligence axis, and mixing them in would make every comparison here meaningless. Latency and throughput are also excluded: they depend far more on your provider, region, and load than on the model.</p>
+      <p>Image, video, audio, and embedding models are out of scope: they are ranked per task rather than on a single intelligence axis, and mixing them in would make every comparison here meaningless. Latency and throughput are also excluded: they depend far more on your provider, region, and load than on the model.</p>
       <p>Availability constraints are recorded as flags where they are confirmed, but they are not legal advice. Data retention terms in particular change often and differ by contract tier. Confirm directly with any vendor before you rely on a flag here contractually.</p>
     </section>
 
@@ -56,14 +56,14 @@ export function aboutPage(data, content) {
 
     <section>
       <h2>Corrections</h2>
-      <p>If a price is wrong or a model is missing, the fix is a one-line edit to <code>data/models.json</code> in the repository &mdash; the site rebuilds itself from that file, so no HTML needs touching. Open an issue or a pull request with a link to the vendor page showing the correct figure.</p>
+      <p>If a price is wrong or a model is missing, the fix is a one-line edit to <code>data/models.json</code> in the repository. The site rebuilds itself from that file, so no HTML needs touching. Open an issue or a pull request with a link to the vendor page showing the correct figure.</p>
       <p>Corrections that cite a primary source (a vendor pricing page or model card) are far quicker to accept than ones citing a secondary write-up.</p>
     </section>
 
     <section>
       <h2>Privacy</h2>
       <p>This site has no analytics, no cookies, no trackers, no fonts or scripts from other domains, and no server that could log you. Nothing you type into the estimator or the search box leaves your browser. The only thing stored on your device is your light or dark theme preference, in <code>localStorage</code>.</p>
-      <p>Your picker and comparison selections are written into the address bar so links are shareable. That means anything you share also shares those settings &mdash; which are only ever the filters you chose, never your usage figures beyond the token counts you typed.</p>
+      <p>Your picker and comparison selections are written into the address bar so links are shareable. That means anything you share also shares those settings, which are only ever the filters you chose, never your usage figures beyond the token counts you typed.</p>
     </section>
 
     <section>

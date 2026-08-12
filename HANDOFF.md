@@ -164,6 +164,22 @@ one's a hard rule documented on the style guide page itself.
    `RHETORICALSTYLE.md` / `OPINIONS.md` / `DA_IDENTITY.md` (uploaded to
    chat, not in this repo) for the full style rules if this needs doing
    again on new content.
+9. **Missed the real em dashes on the first pass.** The first grep only
+   searched for the literal Unicode em dash character, which caught every
+   em dash typed directly but missed every em dash written as an HTML
+   entity. There were eight of those, all rendering as real em dashes on
+   the live About page and the style guide, invisible to a plain-text
+   grep. Fixed all eight. If you're hunting for em dashes in this repo
+   again, grep for the raw character AND the entity name (six letters,
+   starts with amp-m), plus its two numeric HTML entity forms, decimal and
+   hex, though nothing used those numeric forms here.
+   Also: the middle dot (`·`) used as a separator throughout the site
+   ("Anthropic · United States", the footer links, tier model lists) is
+   fine and intentional. Tiffany does not mind it. Do not "fix" it.
+   The one real style tweak that came out of this: the style guide's
+   swatch labels used to read "#F5F1EB light · #14120F dark", which read
+   as ambiguous about what "light" and "dark" modified. Now parenthesized:
+   "#F5F1EB (light) · #14120F (dark)" (`src/templates/styleguide.mjs`).
 
 ## Open items / ideas not yet acted on
 

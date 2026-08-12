@@ -45,7 +45,7 @@ function swatchGrid(list) {
         <div class="meta">
           <span class="name">${esc(label)}</span>
           <span class="val">${esc(varName)}</span><br>
-          <span class="val">${esc(light)} light &middot; ${esc(dark)} dark</span>
+          <span class="val">${esc(light)} (light) &middot; ${esc(dark)} (dark)</span>
         </div>
       </div>`).join('\n');
 }
@@ -59,14 +59,14 @@ export function styleguidePage(data, content) {
           <span class="cname">${esc(m.name)}<span class="corigin">${esc(m.vendor)}</span></span>
           ${showBadge ? `<span class="badge${m.weights === 'open' ? ' open' : ''}">Most capable here</span>` : ''}
         </div>
-        <p class="why">Left border reads <code>--w</code>, set from the data flag. Same markup for both cards &mdash; only the variable changes.</p>
+        <p class="why">Left border reads <code>--w</code>, set from the data flag. Same markup for both cards: only the variable changes.</p>
       </div>`;
 
   return `  <div class="wrap">
     <header class="page">
       <p class="eyebrow">Design system &middot; compiled with data version ${esc(data.version)}</p>
       <h1>Model Map <em>Style Guide</em></h1>
-      <p class="lede">The tokens on this page are the same ones every other page loads from <code>assets/tokens.css</code>. Nothing here is a picture of the design &mdash; it is the design, rendered live, so this page breaks the moment the token layer does.</p>
+      <p class="lede">The tokens on this page are the same ones every other page loads from <code>assets/tokens.css</code>. Nothing here is a picture of the design: it is the design, rendered live, so this page breaks the moment the token layer does.</p>
     </header>
 
     <section>
@@ -141,7 +141,7 @@ ${openExample ? modelCard(openExample, true) : ''}
       <h2>Usage</h2>
       <div class="do-dont">
         <div class="dd yes"><h4>Do</h4>Reference semantic tokens in components. Set <code>--w</code> or <code>--t</code> on a wrapper and let children inherit it. Define a new color as a primitive plus a semantic alias in <code>tokens.css</code>.</div>
-        <div class="dd no"><h4>Don't</h4>Hardcode a hex value in a component rule. Reuse tier colors decoratively outside their data meaning. Set colour or layout with an inline <code>style</code> attribute &mdash; the site's Content-Security-Policy forbids it.</div>
+        <div class="dd no"><h4>Don't</h4>Hardcode a hex value in a component rule. Reuse tier colors decoratively outside their data meaning. Set colour or layout with an inline <code>style</code> attribute: the site's Content-Security-Policy forbids it.</div>
       </div>
     </section>
   </div>
