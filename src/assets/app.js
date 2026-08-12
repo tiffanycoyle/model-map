@@ -1,5 +1,5 @@
 /* Home page: reference search and sort, and the URL-backed setup picker.
-   Every node is built with DOM APIs — no HTML string interpolation anywhere. */
+   Every node is built with DOM APIs. No HTML string interpolation anywhere. */
 (function () {
   'use strict';
 
@@ -18,7 +18,7 @@
   }
 
   function money(n) {
-    if (n === null || n === undefined) return '—';
+    if (n === null || n === undefined) return 'not confirmed';
     if (n >= 100) return '$' + Math.round(n).toLocaleString('en-US');
     if (n >= 10) return '$' + n.toFixed(0);
     return '$' + n.toFixed(2);

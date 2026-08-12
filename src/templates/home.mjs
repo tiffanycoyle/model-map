@@ -8,7 +8,7 @@ import {
  * use when" reads its actual mix of tiers instead of one flat color. Names
  * are matched longest-first so "Sonar Pro" wins over "Sonar" at the same
  * position. A name not found in `models` (an untracked variant mentioned in
- * passing, like "Llama 4 Scout") is left as plain text — there is no tier to
+ * passing, like "Llama 4 Scout") is left as plain text. There is no tier to
  * color it with.
  */
 function colorizeMentions(text, models) {

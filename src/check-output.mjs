@@ -42,7 +42,7 @@ async function htmlFiles(dir) {
 const expectedHash = 'sha256-' + createHash('sha256').update(THEME_BOOTSTRAP, 'utf8').digest('base64');
 
 if (!await exists(DIST)) {
-  console.error('dist/ does not exist — run the build first.');
+  console.error('dist/ does not exist. Run the build first.');
   process.exit(1);
 }
 
@@ -62,7 +62,7 @@ for (const page of pages) {
   const html = await readFile(page, 'utf8');
   const where = (msg) => fail(`${rel}: ${msg}`);
 
-  // 1. No inline style attributes — style-src 'self' refuses them.
+  // 1. No inline style attributes: style-src 'self' refuses them.
   const styleAttrs = html.match(/\sstyle\s*=\s*"/g);
   if (styleAttrs) where(`${styleAttrs.length} inline style attribute(s) found; move the value into a CSS rule`);
 

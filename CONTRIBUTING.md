@@ -56,7 +56,7 @@ Rules the validator enforces, so you will hear about it if you miss one:
 - **Every string in `jobs` needs a label** in `data/content.json` under `jobs`,
   and every declared label needs at least one model using it.
 - **`plot: true` requires a confirmed `pout`.** Keep the plotted set to a
-  representative spread across the price range — around a dozen — or the chart
+  representative spread across the price range (around a dozen), or the chart
   labels collide.
 
 `rank` is an editorial ordering score, not a benchmark result. It decides the
@@ -72,9 +72,9 @@ list live in `data/content.json`. Prose belongs there rather than in templates.
 
 `npm run check` must pass. It runs three things:
 
-1. `validate.mjs` — data integrity
-2. `build.mjs` — the build itself
-3. `check-output.mjs` — post-build guards
+1. `validate.mjs`: data integrity
+2. `build.mjs`: the build itself
+3. `check-output.mjs`: post-build guards
 
 That third one is the one to know about. It fails the build if the output
 contains an inline style attribute, an inline script that is not the hash-pinned
@@ -97,7 +97,7 @@ Two constraints on any code you add:
 policy violation appears in the browser console locally instead of in
 production. Worth checking before opening a pull request:
 
-- The page with JavaScript disabled — it should still be a complete reference
+- The page with JavaScript disabled (it should still be a complete reference)
 - A narrow viewport, around 360px
 - Both themes, and the System setting
 - Whatever you changed, actually changed

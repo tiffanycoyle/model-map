@@ -4,8 +4,8 @@ import { esc } from '../lib/util.mjs';
  * Documents the two-layer token system (tokens.css primitives + semantic
  * layer, consumed by site.css) that the rest of the site is built from.
  * Values shown here are read from the same data and content the live pages
- * use — a closed-weight and an open-weight model, and the real tier
- * descriptions from content.json — so this page cannot drift from the site
+ * use: a closed-weight and an open-weight model, and the real tier
+ * descriptions from content.json. This page cannot drift from the site
  * it is describing.
  */
 

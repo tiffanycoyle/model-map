@@ -42,7 +42,7 @@ export function safeUrl(url) {
 
 /**
  * CSS custom property for a model's tier, keyed off the editorial "tier"
- * field (not derived from price — see the "tier" note in models.json for why
+ * field (not derived from price: see the "tier" note in models.json for why
  * a price threshold can't do this job). Falls back to "work" for anything
  * malformed rather than throwing, since this only ever feeds a color.
  */
@@ -77,7 +77,7 @@ export function monthlyCost(model, mIn, mOut, cacheHit = 0) {
 export const CACHE_READ_RATE = 0.1;
 
 export function money(n) {
-  if (n === null || n === undefined) return '—';
+  if (n === null || n === undefined) return 'not confirmed';
   if (n >= 100) return '$' + Math.round(n).toLocaleString('en-US');
   if (n >= 10) return '$' + n.toFixed(0);
   if (n >= 1) return '$' + n.toFixed(2);

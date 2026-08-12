@@ -1,4 +1,4 @@
-/* The Model Map — component styles (Layer 2). Consumes tokens.css only; no
+/* The Model Map: component styles (Layer 2). Consumes tokens.css only. No
    external fonts, no imports, no remote assets, no hardcoded color below. */
 
 * { box-sizing: border-box; }
@@ -35,7 +35,7 @@ h3 { font-size: var(--fs-h3); margin: 0; font-weight: var(--fw-semi); }
 
 /* ---------- Per-section identity color ----------
    A handful of sections carry their own ambient hue from the same five-hue
-   palette used for tiers, purely for wayfinding as you scroll — never to
+   palette used for tiers, purely for wayfinding as you scroll. Never to
    imply a tier or weights classification. Sections that already show tier
    or weights color internally (prices, tiers, reference, build) are left on
    the default accent so a reader never has to ask what a color here means. */
@@ -337,7 +337,7 @@ td.pick { font-weight: var(--fw-medium); color: var(--section-accent, var(--ink)
 td.alt { color: var(--ink-soft); }
 /* A mentioned model name within prose (the "Bootstrapped pick" column),
    colored by that specific model's own tier rather than the column's
-   section accent — several tiers usually appear in the same column. */
+   section accent. Several tiers usually appear in the same column. */
 td.alt .mention { color: var(--t, inherit); font-weight: var(--fw-medium); }
 .tablenote { color: var(--ink-faint); font-size: 0.82rem; margin: 0.6rem 0 0; }
 

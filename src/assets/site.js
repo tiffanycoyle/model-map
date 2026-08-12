@@ -25,7 +25,7 @@
       if (theme === 'system') localStorage.removeItem(STORAGE_KEY);
       else localStorage.setItem(STORAGE_KEY, theme);
     } catch (e) {
-      /* storage unavailable (private mode, blocked cookies) — theme still applies for this page */
+      /* storage unavailable (private mode, blocked cookies): theme still applies for this page */
     }
   }
 

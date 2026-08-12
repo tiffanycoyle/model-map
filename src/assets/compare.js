@@ -174,7 +174,7 @@
         var was = copyBtn.textContent;
         copyBtn.textContent = 'Link copied';
         setTimeout(function () { copyBtn.textContent = was; }, 1800);
-      }, function () { /* clipboard denied — leave the label alone */ });
+      }, function () { /* clipboard denied, leave the label alone */ });
     });
   }
 

@@ -4,7 +4,7 @@ A priced, labelled field reference to the AI model market. Twenty-five models
 from thirteen vendors, with a cost estimator that answers the question people
 actually have: *what would this cost me, at my volume, given my constraints?*
 
-Built as a static site with **no dependencies at all** — not a small dependency
+Built as a static site with **no dependencies at all**: not a small dependency
 tree, none. The build uses only the Node standard library, and the site loads
 nothing from any other origin.
 
@@ -32,7 +32,7 @@ Everything on the site is generated from two files:
 
 Edit those, run `npm run check`, and every page, chart, table and estimate
 updates itself. The price chart positions, cost-bar widths, and the counts in
-the prose ("the spread is roughly 385x") are all computed at build time — there
+the prose ("the spread is roughly 385x") are all computed at build time. There
 are no hard-coded numbers in the templates.
 
 Use `null` for anything you could not verify against a primary source. Nulls
@@ -61,7 +61,7 @@ at the subpath. Every other link on the site is relative, so the same build work
 at a subpath or at a domain root without reconfiguration.
 
 **One real limitation:** GitHub Pages cannot set HTTP response headers. The
-Content-Security-Policy still applies — it ships as a `<meta>` tag in every page —
+Content-Security-Policy still applies (it ships as a `<meta>` tag in every page),
 but `frame-ancestors`, `Strict-Transport-Security`, and `X-Frame-Options` cannot be
 enforced there, because those only work as real headers. See
 [SECURITY.md](SECURITY.md) for exactly what you do and do not get on each host.
@@ -84,7 +84,7 @@ on security, and the faster one on delivery.
 
 ### Custom domain
 
-Put a `CNAME` file containing your domain in `public/` — everything in that
+Put a `CNAME` file containing your domain in `public/`. Everything in that
 directory is copied verbatim into the build:
 
 ```bash
@@ -128,21 +128,21 @@ src/
   templates/        layout, home, compare, about
   assets/           site.css, site.js, app.js, compare.js
 public/         copied verbatim into the build (CNAME, etc.)
-dist/           build output — generated, never committed
+dist/           build output (generated, never committed)
 ```
 
 Pages are **pre-rendered**: all 25 models, the full comparison table, the cost
 bars and the default picker results are real HTML in the served file. JavaScript
 adds search, sorting, live cost estimates and shareable URLs on top. With
-JavaScript disabled the site still works as a complete reference — which also
+JavaScript disabled the site still works as a complete reference, which also
 means search engines and link previews see the actual content.
 
 ### Design decisions worth knowing
 
-- **No inline styles or scripts.** Computed values — chart positions, bar widths —
+- **No inline styles or scripts.** Computed values (chart positions, bar widths)
   are emitted as CSS rules keyed by element id and appended to the stylesheet at
   build time. The one inline script is the theme bootstrap that prevents a
-  flash of the wrong colours; it is pinned in the CSP by SHA-256 hash. `npm run
+  flash of the wrong colours. It is pinned in the CSP by SHA-256 hash. `npm run
   check` fails the build if anything else inline appears.
 - **DOM construction, never HTML strings.** Client-side rendering builds nodes
   with `document.createElement` and `textContent`. There is no path by which
@@ -159,6 +159,6 @@ means search engines and link previews see the actual content.
 ## Licence
 
 Code is MIT. The compiled dataset in `data/models.json` is published under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — use it, just credit
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): use it, just credit
 it. Figures are gathered from the public sources listed on the About page and on
-the site footer; each vendor's pricing remains theirs to change without notice.
+the site footer. Each vendor's pricing remains theirs to change without notice.

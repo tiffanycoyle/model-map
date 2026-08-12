@@ -5,7 +5,7 @@
   "notes": {
     "pricing": "pin = input price per million tokens, pout = output price per million tokens.",
     "rank": "Relative capability score used only for ordering and for the 'most capable here' badge. Not a vendor-published number.",
-    "tier": "Editorial classification for the five-tier ledger: frontier, work(horse), small (fast/cheap), open (a flagship open-weight release), or spec(ialist, unused for now). Independent of 'weights' — a cheap open-weight model is tier 'small', not 'open'; 'open' here means a large, notable open release. Drives every tier color in the UI: the price chart, hovering a model in the full reference, and the coloring in the 'what to use when' table.",
+    "tier": "Editorial classification for the five-tier ledger: frontier, work(horse), small (fast/cheap), open (a flagship open-weight release), or spec(ialist, unused for now). Independent of 'weights': a cheap open-weight model is tier 'small', not 'open'. 'Open' here means a large, notable open release. Drives every tier color in the UI (price chart, hovering a model in the full reference, coloring in the 'what to use when' table).",
     "plot": "true = include this model on the price-range chart on the home page. Keep this to a representative spread so labels do not collide.",
     "flags": "oneGpu = runs on a single ordinary GPU. eu = European vendor. zdr = can be used without vendor data retention. m1 = handles roughly a million tokens of context."
   },

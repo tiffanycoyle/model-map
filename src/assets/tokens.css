@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Model Map Design System — Layer 1: Tokens
+   Model Map Design System: Layer 1, Tokens
    Single source of truth. Nothing outside this file should hardcode a color.
 
    Palette rebased on the Coyle Co brand (blue accent, near-black ink, warm
@@ -8,7 +8,7 @@
    their literal brand hex: at the literal values they landed at 4.14:1 and
    4.21:1 against --bg, under the 4.5:1 WCAG AA floor for the small text they
    render as. The hue is unchanged; only lightness moved enough to clear it.
-   Typography is untouched — this file only ever changes color.
+   Typography is untouched. This file only ever changes color.
    ========================================================================== */
 
 :root {
@@ -148,7 +148,7 @@
 /* System preference, only when no explicit choice is set.
    :not([data-theme]) (rather than a zero-specificity :where() wrapper) gives
    this selector two simple selectors of specificity, one more than the bare
-   `:root` the light defaults use above — otherwise the light block always
+   `:root` the light defaults use above. Otherwise the light block always
    wins the cascade regardless of this media query, and system dark mode
    never actually applies. [data-theme="light"] / [data-theme="dark"] match
    the same specificity and never overlap with :not([data-theme]), so an

@@ -55,7 +55,7 @@ export function validate(data, content) {
     }
 
     if (typeof m.pin === 'number' && typeof m.pout === 'number' && m.pout < m.pin) {
-      // Not fatal — Perplexity's Sonar is genuinely flat-rated — but worth flagging.
+      // Not fatal (Perplexity's Sonar is genuinely flat-rated), but worth flagging.
       if (m.pout !== m.pin) {
         push(`${where}: output price (${m.pout}) is below input price (${m.pin}); confirm this is right`);
       }
@@ -140,5 +140,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.error(`${problems.length} problem(s) found:\n` + problems.map((p) => '  - ' + p).join('\n'));
     process.exit(1);
   }
-  console.log(`data/models.json OK — ${data.models.length} models, version ${data.version}`);
+  console.log(`data/models.json OK: ${data.models.length} models, version ${data.version}`);
 }

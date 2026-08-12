@@ -12,7 +12,7 @@ into a page, and is the site configured to limit the damage if they did.
 
 ## What is deliberately absent
 
-- **No dependencies.** Not a small dependency tree — none. The build uses only
+- **No dependencies.** Not a small dependency tree, none. The build uses only
   the Node standard library, so there is no `npm install`, no lockfile to audit,
   no transitive package that can be compromised upstream.
 - **No third-party resources.** No CDN scripts, no web fonts, no analytics, no
@@ -29,7 +29,7 @@ into a page, and is the site configured to limit the damage if they did.
 default-src 'none';
 base-uri 'none';
 form-action 'none';
-frame-ancestors 'none';        (header only — see below)
+frame-ancestors 'none';        (header only, see below)
 img-src 'self' data:;
 style-src 'self';
 script-src 'self' 'sha256-<hash of the theme bootstrap>';
@@ -45,13 +45,13 @@ upgrade-insecure-requests
 The single inline script is the pre-paint theme bootstrap, which reads the saved
 theme before first paint so the page does not flash the wrong colours. It is
 allowed by **SHA-256 hash**, not by `'unsafe-inline'`. The hash is computed from
-the script source at build time, so it cannot drift out of sync — and because
+the script source at build time, so it cannot drift out of sync. Because
 `'unsafe-inline'` is absent, no *other* inline script can execute even if one
 were somehow injected into the markup.
 
 `style-src 'self'` with no `'unsafe-inline'` means inline `style=` attributes are
-refused too. Values that genuinely vary with the data — price-chart positions,
-cost-bar widths — are emitted as CSS rules keyed by element id and appended to the
+refused too. Values that genuinely vary with the data (price-chart positions,
+cost-bar widths) are emitted as CSS rules keyed by element id and appended to the
 stylesheet during the build.
 
 ## What each host can enforce
@@ -78,7 +78,7 @@ GitHub Pages site on a **custom domain** does not.
 
 **If clickjacking protection matters to you, deploy on Cloudflare Pages.** It is
 the only one of the two that can send the headers that provide it. Everything
-else meaningful — the CSP itself, HTTPS, the absence of third-party code — is the
+else meaningful (the CSP itself, HTTPS, the absence of third-party code) is the
 same on both.
 
 The header set is generated into `dist/_headers` by the build, so the CSP in the
@@ -95,7 +95,7 @@ There is no server-side input. Two client-side inputs exist:
   markup. Number inputs are clamped to a sane range.
 - **The query string.** Picker filters and comparison selections are read from
   the URL so links are shareable. Every value is checked against a known set of
-  valid keys before it is used — an unrecognised job, constraint, budget, or
+  valid keys before it is used. An unrecognised job, constraint, budget, or
   model id is discarded rather than passed through. Model ids are additionally
   constrained by the data validator to `[a-z0-9-]`.
 
@@ -121,5 +121,5 @@ discussed publicly, mark it as such and it can be moved to a private advisory.
 
 Given the architecture, the most valuable reports are likely to be: a way to get
 content into a page that the escaping misses, a CSP weakness, or a factual error
-in the data that would lead someone to a bad decision. The last one counts — the
+in the data that would lead someone to a bad decision. The last one counts. The
 point of this site is to be relied on.

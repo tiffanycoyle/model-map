@@ -6,7 +6,7 @@
  * paths get 404.html, and the security headers from _headers are applied so
  * you see Content-Security-Policy problems locally rather than in production.
  *
- * Binds to localhost only — this is a preview tool, not a production server.
+ * Binds to localhost only. This is a preview tool, not a production server.
  */
 
 import { createServer } from 'node:http';

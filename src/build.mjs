@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The Model Map — static site build.
+ * The Model Map: static site build.
  *
  * Reads data/*.json, renders every page to plain HTML, and writes dist/.
  * Uses only the Node standard library: there is no dependency tree to audit,
@@ -136,7 +136,7 @@ const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" rol
 
 /**
  * Cloudflare Pages reads this file and turns it into real response headers.
- * GitHub Pages ignores it (it cannot set headers at all) — see SECURITY.md.
+ * GitHub Pages ignores it (it cannot set headers at all). See SECURITY.md.
  */
 function headersFile(csp) {
   return `# Response headers for Cloudflare Pages.
@@ -330,7 +330,7 @@ async function build() {
     );
   }
 
-  // Not part of the site — written next to it so the output checker knows what
+  // Not part of the site. Written next to it so the output checker knows what
   // base path the absolute URLs in 404.html were generated against.
   await writeFile(
     join(ROOT, '.build-info.json'),
