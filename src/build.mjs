@@ -16,6 +16,7 @@ import { layout, THEME_BOOTSTRAP } from './templates/layout.mjs';
 import { homePage } from './templates/home.mjs';
 import { comparePage } from './templates/compare.mjs';
 import { aboutPage } from './templates/about.mjs';
+import { styleguidePage } from './templates/styleguide.mjs';
 import { jsonScript, csvCell } from './lib/util.mjs';
 import { validate } from './validate.mjs';
 
@@ -48,7 +49,7 @@ const BASE_PATH = (() => {
 
 /** Assets copied verbatim into dist/assets/. site.css is handled separately
  *  because the build appends data-derived rules to it. */
-const ASSETS = ['site.js', 'app.js', 'compare.js'];
+const ASSETS = ['tokens.css', 'site.js', 'app.js', 'compare.js'];
 
 /**
  * Content-Security-Policy.
@@ -124,12 +125,12 @@ function modelsCsv(data) {
 }
 
 const FAVICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Model Map">
-  <rect width="32" height="32" rx="7" fill="#1C555C"/>
-  <path d="M5 21h22" stroke="#8FD3D9" stroke-width="1.5" stroke-linecap="round" opacity=".45"/>
-  <circle cx="8" cy="21" r="2.6" fill="#8FD3D9"/>
-  <circle cx="16" cy="14.5" r="2.6" fill="#F0F5F2"/>
-  <circle cx="24" cy="8" r="2.6" fill="#E0A472"/>
-  <path d="M8 21l8-6.5L24 8" stroke="#F0F5F2" stroke-width="1.5" stroke-linejoin="round" fill="none" opacity=".65"/>
+  <rect width="32" height="32" rx="7" fill="#22636B"/>
+  <path d="M5 21h22" stroke="#74B6BC" stroke-width="1.5" stroke-linecap="round" opacity=".45"/>
+  <circle cx="8" cy="21" r="2.6" fill="#74B6BC"/>
+  <circle cx="16" cy="14.5" r="2.6" fill="#FAFBF9"/>
+  <circle cx="24" cy="8" r="2.6" fill="#DB9C68"/>
+  <path d="M8 21l8-6.5L24 8" stroke="#FAFBF9" stroke-width="1.5" stroke-linejoin="round" fill="none" opacity=".65"/>
 </svg>
 `;
 
@@ -225,6 +226,16 @@ async function build() {
       rel: '../',
       scripts: ['site.js'],
       body: aboutPage(data, content),
+    },
+    {
+      path: 'styleguide/index.html',
+      route: '/styleguide/',
+      active: '',
+      title: 'Style guide',
+      description: 'The design tokens, type scale, and component patterns The Model Map is built from.',
+      rel: '../',
+      scripts: ['site.js'],
+      body: styleguidePage(data, content),
     },
   ];
 

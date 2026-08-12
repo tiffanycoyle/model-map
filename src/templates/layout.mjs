@@ -58,6 +58,7 @@ export function layout(opts) {
 <meta name="mm:compiled" content="${esc(compiled)}">
 ${canonical ? `<link rel="canonical" href="${esc(canonical)}">\n` : ''}<link rel="icon" href="${rel}favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/json" href="${rel}api/models.json" title="Model data as JSON">
+<link rel="stylesheet" href="${rel}assets/tokens.css">
 <link rel="stylesheet" href="${rel}assets/site.css">
 <script>${THEME_BOOTSTRAP}</script>
 </head>
@@ -81,7 +82,7 @@ ${body}
 <footer class="sitefoot">
   <div class="wrap">
     <p><strong>${esc(siteName)}</strong> · data version ${esc(version)}, compiled ${esc(compiled)}. Prices are per million tokens, input / output. Fields marked &ldquo;not confirmed&rdquo; could not be verified against a primary source and are left out of all cost maths.</p>
-    <p>Rankings and prices move monthly. Treat every figure here as a snapshot to check, not a quote. <a href="${rel}about/">How this data is put together</a> · <a href="${rel}api/models.json">Raw JSON</a></p>
+    <p>Rankings and prices move monthly. Treat every figure here as a snapshot to check, not a quote. <a href="${rel}about/">How this data is put together</a> · <a href="${rel}api/models.json">Raw JSON</a> · <a href="${rel}styleguide/">Design system</a></p>
   </div>
 </footer>
 ${scripts.map((s) => `<script src="${rel}assets/${esc(s)}" defer></script>`).join('\n')}
